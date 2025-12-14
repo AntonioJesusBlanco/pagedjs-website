@@ -1,38 +1,39 @@
 ---
-title: "The big picture"
+title: "La visión general"
 date: 2019-09-03T18:23:22+02:00
 draft: false
 part: 1
 symbolContent: "𖠅"
-symbolText: "King Njoya created the Bamum script at the age of 25 in 1896 for the Bamum language, now spoken in present-day Cameroon. [Read more](https://decodeunicode.org/en/scripts/bamum#bamum)"
-intro: "Heard about Paged.js but don’t know where to start? "
+symbolText: "El rey Njoya creó la escritura bamum a los 25 años, en 1896, para la lengua bamum, que hoy se habla en el actual Camerún. [Leer más](https://decodeunicode.org/en/scripts/bamum#bamum)"
+intro: "¿Has oído hablar de Paged.js pero no sabes por dónde empezar?"
 cover: "/images/chuncker-1.png"
 class: documentation
 ---
 
-## What is Paged.js?
+## ¿Qué es Paged.js?
 
-Paged.js is a free and open-source library that paginates any HTML content to produce beautiful print-ready PDF.
-The library fragments the content, reads your CSS print declarations and presents a paginated preview in your browser that you can save as PDF.
+Paged.js es una biblioteca libre y de código abierto que pagina cualquier contenido HTML para producir hermosos PDF listos para impresión.  
+La biblioteca fragmenta el contenido, lee tus declaraciones CSS para impresión y presenta una vista previa paginada en el navegador que puedes guardar como PDF.
 
-By paginating content in the browser, Paged.js shows a preview of the PDF output in web browsers. This allows designers to use browsers dev tools (eg. the inspection console built into most browsers) to make changes on the fly and control the rendering of the typesetting.
+Al paginar el contenido en el navegador, Paged.js muestra una vista previa del resultado final en PDF directamente en los navegadores web. Esto permite a diseñadores y diseñadoras usar las herramientas de desarrollo del navegador (por ejemplo, la consola de inspección integrada en la mayoría de los navegadores) para realizar cambios al instante y controlar el renderizado de la composición tipográfica.
 
-It's also possible to use Paged.js within other tools and to extend rendering by adding plugins.
+También es posible usar Paged.js dentro de otras herramientas y ampliar el renderizado mediante la creación de plugins.
 
-As Paged.js follows the W3C standards, it can easily be a part of a automated workflows thanks to the command line interface version (using an headless browser) that can generate a PDF from scriptable automated commands.
+Como Paged.js sigue los estándares del W3C, puede integrarse fácilmente en flujos de trabajo automatizados gracias a la versión de línea de comandos (que utiliza un navegador sin interfaz gráfica) capaz de generar un PDF a partir de comandos automatizados mediante scripts.
 
-## W3C specifications
+## Especificaciones del W3C
 
-<p>Paged.js is based on the CSS standards written by the World Wide Web Consortium (W3C). Paged.js is a <span class="dt">polyfill<span class="dd">A <a href="https://en.wikipedia.org/wiki/Polyfill_(programming))">polyfill</a> is a bit of code that implements a feature on web browsers that do not support the feature</span></span> for some CSS properties made to print HTML from the browser. It can parse CSS stylesheets, and translate the declarations in HTML and CSS that a browser can understand. The print declarations (by updating them with supported styles or replacing them with JavaScript implementations) and present a paginated rendering of the HTML document using the fragmentation provided by CSS columns.</p>
+<p>Paged.js se basa en los estándares CSS escritos por el World Wide Web Consortium (W3C). Paged.js es un <span class="dt">polyfill<span class="dd">Un <a href="https://en.wikipedia.org/wiki/Polyfill_(programming))">polyfill</a> es un fragmento de código que implementa una funcionalidad en navegadores que no la soportan de forma nativa</span></span> para algunas propiedades CSS destinadas a la impresión de HTML desde el navegador. Puede analizar hojas de estilo CSS y traducir las declaraciones en HTML y CSS a un formato que el navegador pueda entender. Las declaraciones de impresión (actualizándolas con estilos compatibles o sustituyéndolas por implementaciones en JavaScript) permiten presentar un renderizado paginado del documento HTML utilizando la fragmentación proporcionada por las columnas CSS.</p>
 
-The W3C CSS modules that Paged.js aims to implement are the following:
+Los módulos CSS del W3C que Paged.js pretende implementar son los siguientes:
 
-- [CSS Paged Media Module Level 3](https://www.w3.org/TR/css3-page/)
-- [CSS Generated Content for Paged Media Module](https://www.w3.org/TR/css-gcpm-3/)
-- [CSS Fragmentation Module Level 3](https://www.w3.org/TR/css-break-3/)
+- [Módulo CSS de Medios Paginados Nivel 3](https://www.w3.org/TR/css3-page/)
+- [Módulo CSS de Contenido Generado para Medios Paginados](https://www.w3.org/TR/css-gcpm-3/)
+- [Módulo CSS de Fragmentación Nivel 3](https://www.w3.org/TR/css-break-3/)
 
-## A community
+## Una comunidad
 
-The code of Paged.js is open-source with a MIT license and the development is community-driven. Everyone is invited to join us! You can find the source code of Paged.js on the repo of our self-hosted gitlab: https://gitlab.coko.foundation/pagedjs/pagedjs
+El código de Paged.js es de código abierto, con licencia MIT, y su desarrollo está impulsado por la comunidad. ¡Todo el mundo está invitado a participar! Puedes encontrar el código fuente de Paged.js en el repositorio de nuestro GitLab autoalojado:  
+https://gitlab.coko.foundation/pagedjs/pagedjs
 
-We’re relying on designers and developers who want to discuss new features, ideas and bug fixes. If you’d like to participate in the conversation, you can add issues to the repo. But the easiest way is to go to [our self-hosted chat](https://mattermost.coko.foundation/) and join the conversation.
+Contamos con diseñadores y desarrolladores que quieran debatir nuevas funcionalidades, ideas y correcciones de errores. Si te gustaría participar en la conversación, puedes añadir incidencias en el repositorio. Pero la forma más sencilla es entrar en [nuestro chat autoalojado](https://mattermost.coko.foundation/) y unirte a la conversación.
