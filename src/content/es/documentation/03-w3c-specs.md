@@ -1,58 +1,58 @@
 ---
-title: "W3C specifications for printing"
+title: "Especificaciones del W3C para la impresión"
 date: 2019-10-03T10:23:22+03:00
 draft: false
 part: 3
-intro: "W3C is thinking about everything."
+intro: "El W3C piensa en todo."
 ---
 
-## W3C CSS modules
+## Módulos CSS del W3C
 
-For printing pages you need very different rules from those used to display content in the browser. For example, you’ll want to declare fixed sized pages rather than lay out a continuous flow of text. Books also need many specific elements for the printed layout: margins, running headers, page numbers, a table of contents, and so on.
 
-Fortunately the work on CSS at the W3C has resulted in special modules of the CSS standard for managing the layout of a HTML document during printing. These modules can be used in a print stylesheet with the media query `@media print{}` and will only be applied when
-the web page is printed from the browser print dialog to create a PDF.
+Para imprimir páginas se necesitan reglas muy distintas de las que se utilizan para mostrar contenido en el navegador. Por ejemplo, querrás declarar páginas de tamaño fijo en lugar de disponer un flujo continuo de texto. Los libros también requieren muchos elementos específicos para el diseño impreso: márgenes, encabezados corridos, números de página, una tabla de contenidos, etc.
 
-- [CSS Paged Media Module Level 3](https://www.w3.org/TR/css3-page/) “describes the page model that partitions a flow into pages. (…) It adds functionality for pagination, page margins, page size and orientation, headers and footers, widows and orphans, and image orientation.”
-- [CSS Generated Content for Paged Media Module](https://www.w3.org/TR/css-gcpm-3/) defines many special requirements for the display of printed document content: running headers and footers, footnotes, generated text for cross-references or table of contents, PDF bookmarks, etc.
-- [CSS Fragmentation Module Level 3](https://www.w3.org/TR/css-break-3/) defines how and where CSS boxes can be fragmented, including across page breaks. (This module is not specific for print.)
-- [ CSS page floats](https://www.w3.org/TR/css-page-floats-3/) defines how an element is to be removed from the normal flow and instead be placed into a different place depends on page. ([see the article “Page Media approaches: page floats”](/journal/PagedMediaapproaches:pagefloats/))
+Afortunadamente, el trabajo sobre CSS en el W3C ha dado como resultado módulos especiales del estándar CSS para gestionar el diseño de un documento HTML durante la impresión. Estos módulos pueden utilizarse en una hoja de estilos de impresión mediante la media query `@media print {}` y solo se aplicarán cuando la página web se imprima desde el diálogo de impresión del navegador para crear un PDF.
 
-We try to respect the specifications as much as possible, but sometimes, they can be unclear or leave a certain degree of indeterminacy. Thus, Paged.js implementation is made of our own interpretation and when the rules will be implemented by the browsers, they may differ from what we would have built.
+- [Módulo CSS de Medios Paginados Nivel 3](https://www.w3.org/TR/css3-page/) "describe el modelo de página que divide un flujo en páginas. (…) Añade funcionalidad para la paginación, los márgenes de página, el tamaño y la orientación de la página, encabezados y pies de página, viudas y huérfanas, y la orientación de las imágenes".
+- [Módulo CSS de Contenido Generado para Medios Paginados](https://www.w3.org/TR/css-gcpm-3/) define muchos requisitos especiales para la visualización del contenido de documentos impresos: encabezados y pies de página corridos, notas al pie, texto generado para referencias cruzadas o tablas de contenido, marcadores PDF, etc.
+- [Módulo CSS de Fragmentación Nivel 3](https://www.w3.org/TR/css-break-3/) define cómo y dónde pueden fragmentarse las cajas CSS, incluso a través de saltos de página. (Este módulo no es específico de la impresión).
+- [CSS page floats](https://www.w3.org/TR/css-page-floats-3/) define cómo un elemento se extrae del flujo normal y se coloca en una posición diferente que depende de la página. ([ver el artículo «Page Media approaches: page floats»](/journal/PagedMediaapproaches:pagefloats/))
 
-At some point, we’ll need things that are not yet thought of by the W3C. Therefore, we may develop our own rules, based on what the community of users needs. We’ll try to take the most appropriate technically to meet the expectations of typographers and designers. In that case, we’ll write down the specifications and share those with the other W3C members.
+Intentamos respetar las especificaciones tanto como sea posible, pero a veces pueden resultar poco claras o dejar cierto grado de indeterminación. Por ello, la implementación de Paged.js se basa en nuestra propia interpretación y, cuando estas reglas sean implementadas por los navegadores, pueden diferir de lo que nosotros habríamos construido.
 
-## Support of W3C specifications in browsers
+En algún momento necesitaremos cosas que aún no han sido contempladas por el W3C. En ese caso, podremos desarrollar nuestras propias reglas, basadas en las necesidades de la comunidad de usuarios. Intentaremos adoptar las soluciones técnicamente más adecuadas para satisfacer las expectativas de tipógrafos y diseñadores. En ese caso, redactaremos las especificaciones y las compartiremos con otros miembros del W3C.
 
-The previous CSS standard modules were written by the World Wide Web Consortium (W3C). W3C publishes documents that define Web technologies (including CSS) which are considered Web Standards. W3C modules are published publicly throughout the process of their development until they are finally released as a [W3C Recommendation](https://www.w3.org/2018/Process-20180201/#rec-publication). The modules we need for pagined media are at various stages of the process, but most are still in the [Working Draft](https://www.w3.org/2018/Process-20180201/#revised-wd) stage.
+## Compatibilidad de las especificaciones del W3C en los navegadores
 
-Browser developers can start implementing these recommendations at any point, knowing they may change later, but the developers are not obliged to implement all the CSS specifications until they become W3C Recommendations.
+Los módulos estándar de CSS mencionados anteriormente fueron redactados por el World Wide Web Consortium (W3C). El W3C publica documentos que definen tecnologías web (incluido CSS) y que se consideran estándares web. Los módulos del W3C se publican públicamente a lo largo de su proceso de desarrollo hasta que finalmente se publican como una [Recomendación del W3C](https://www.w3.org/2018/Process-20180201/#rec-publication). Los módulos que necesitamos para los medios paginados se encuentran en distintas fases de este proceso, pero la mayoría aún está en la etapa de [Borrador de Trabajo](https://www.w3.org/2018/Process-20180201/#revised-wd).
 
-Thankfully, browser developers have already taken some interest in implementing parts of the Paged Media Working Draft standards and [@page rules have partial support](https://caniuse.com/#search=%40page) in Chrome, Firefox and IE. But it’s still difficult to use these browsers effectively for the output of paginated content.
+Los desarrolladores de navegadores pueden comenzar a implementar estas recomendaciones en cualquier momento, sabiendo que pueden cambiar más adelante, pero no están obligados a implementar todas las especificaciones CSS hasta que se conviertan en Recomendaciones del W3C.
 
-So when it comes to producing paginated content from the browser, this is where we are today: the rules for printing web pages from a browser are written, and even standardised, but we can’t as yet use them effectively.
+Afortunadamente, los desarrolladores de navegadores ya han mostrado cierto interés en implementar partes de los estándares del Borrador de Trabajo de Medios Paginados y las [reglas `@page` tienen soporte parcial](https://caniuse.com/#search=%40page) en Chrome, Firefox e IE. Sin embargo, sigue siendo difícil utilizar estos navegadores de forma eficaz para la salida de contenido paginado.
 
-### Which browser to use?
+Así que, a día de hoy, cuando se trata de producir contenido paginado desde el navegador, esta es la situación: las reglas para imprimir páginas web desde un navegador están escritas e incluso estandarizadas, pero todavía no podemos utilizarlas de forma efectiva.
 
-We really want Paged.js to work perfectly with all the browsers around, but as we’re writing those words, some are more suitable than others. It depends on the features you want to have for your documents (CSS flexbox, hyphens…). But you also maybe need a browser that take into account the size property to generate PDFs. Here are some explanations to help you choose.
+### ¿Qué navegador utilizar?
 
-#### Support of @page { size }
+Queremos que Paged.js funcione perfectamente con todos los navegadores existentes, pero en el momento de escribir estas líneas, algunos son más adecuados que otros. Todo depende de las funcionalidades que quieras para tus documentos (CSS flexbox, separación de palabras, etc.). Además, puede que necesites un navegador que tenga en cuenta la propiedad size para generar PDFs. A continuación, algunas explicaciones para ayudarte a elegir.
 
-Paged.js acts like a sort of polyfill but there is one thing we can't manage that we need to print correctly: the support by the browser of the `@page { size }` property. This property will allow you to create a PDF at the right size when it is generated. These property is only supported in some browsers:
+#### Compatibilidad con @page { size }
+
+Paged.js actúa como una especie de polyfill, pero hay algo que no podemos gestionar y que es necesario para imprimir correctamente: el soporte por parte del navegador de la propiedad `@page { size }`. Esta propiedad permite crear un PDF con el tamaño correcto cuando se genera. Esta propiedad solo es compatible con algunos navegadores:
 
 - Chromium
 - Google Chrome
 - Brave
 - Opera
 
-We know that many of you are attached to Mozilla Firefox (and so are we). It is still possible to use Paged.js with it but you will have to manually change the PDF size when you generate it (in the custom sizes). Be careful to calculate bleeds and crop marks if you need to add those.
+Sabemos que muchos de vosotros estáis muy vinculados a Mozilla Firefox (y nosotros también). Aun así, es posible usar Paged.js con él, pero tendrás que cambiar manualmente el tamaño del PDF cuando lo generes (usando tamaños personalizados). Ten cuidado al calcular los sangrados y las marcas de corte si necesitas añadirlos.
 
-#### Support of CSS grid
+#### Compatibilidad con CSS Grid
 
-You must also use a recent version of these browsers because we use some CSS grid module properties for the construction of the pages. CSS grid is supported in most browsers since mid-2017. You can see here if your browser supports CSS grid: https://caniuse.com/#feat=css-grid
+También debes utilizar una versión reciente de estos navegadores, ya que usamos algunas propiedades del módulo CSS Grid para la construcción de las páginas. CSS Grid está soportado en la mayoría de los navegadores desde mediados de 2017. Puedes comprobar aquí si tu navegador es compatible con CSS Grid: https://caniuse.com/#feat=css-grid
 
-#### Different rendering between browsers
+#### Diferencias de renderizado entre navegadores
 
-The result will not always be the same from one browser to another because they don't use the same browser engine. For example, line-height is not managed in the same way on Firefox and Chrome. The result will also not be the same depending on the OS you are using. For example, hyphenation is managed in Chrome only on Apple OSX.
+El resultado no siempre será el mismo de un navegador a otro, ya que no utilizan el mismo motor de renderizado. Por ejemplo, la propiedad line-height no se gestiona de la misma manera en Firefox y en Chrome. El resultado tampoco será el mismo dependiendo del sistema operativo que utilices. Por ejemplo, la separación de palabras (hyphenation) en Chrome solo está disponible en Apple macOS.
 
-We recommend staying on the same browser and OS for the design and generation of the PDF to avoid unpleasant surprises.
+Recomendamos mantener el mismo navegador y sistema operativo durante el diseño y la generación del PDF para evitar sorpresas desagradables.
