@@ -230,7 +230,7 @@ Ambos tipos de marcas deben añadirse en la misma propiedad `marks`, pudiendo us
 ```
 
 
-## Code Review for a chapter
+## Revisión de código para un capítulo
 
 ```css 
 @media print{

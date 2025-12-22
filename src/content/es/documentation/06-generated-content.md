@@ -1,21 +1,22 @@
 ---
-title: "Generated Content"
+title: "Contenido generado"
 date: 2019-09-03T18:23:22+02:00
 draft: false
-intro: "The content property in CSS is one powerfull way to add structure to your content, without fixing it in the HTML. Let’s check how the web manage those automatically created properties before we get to what Paged.js can create automatically"
+intro: "La propiedad content en CSS es una forma muy potente de añadir estructura a tu contenido sin fijarla en el HTML. Veamos cómo la web gestiona estas propiedades creadas automáticamente antes de entrar en lo que Paged.js puede generar de forma automática."
 weight: 6
 part: 6
 ---
 
-One of the important advantages of CSS is that it helps you to separate a document’s style from its content. The separation of HTML from CSS makes it easier to maintain sites, share style sheets across pages, and display documents to different environments. In some case, some elements are not part of the content itself, but are help to read in different environnements. This can be auxiliary information like inserting the word "Figure" before the caption of a figure, or "Chapter 7" before the seventh chapter title.
 
-Those are usually made using CSS _generated content_ properties. That will avoid problems with numbering figures when one is added in the middle of your content. Or if you want to reuse the chapter in another book, and have a new way to number figures.
+Una de las ventajas más importantes de CSS es que ayuda a separar el estilo de un documento de su contenido. La separación entre HTML y CSS facilita el mantenimiento de los sitios, el uso compartido de hojas de estilo entre páginas y la visualización de documentos en distintos entornos. En algunos casos, ciertos elementos no forman parte del contenido en sí, sino que ayudan a su lectura en diferentes entornos. Puede tratarse de información auxiliar, como insertar la palabra "Figura" antes del pie de una imagen, o "Capítulo 7" antes del título del séptimo capítulo.
 
-In technical terms, generated content exists only in the layout of the web document: they are not part of the DOM tree.
+Esto suele hacerse mediante las propiedades de _contenido generado_ de CSS. De esta forma se evitan problemas al numerar figuras cuando se añade una nueva en medio del contenido, o si se quiere reutilizar un capítulo en otro libro y aplicar un nuevo sistema de numeración.
 
-## The content property
+En términos técnicos, el contenido generado solo existe en el diseño del documento web: no forma parte del árbol DOM.
 
-The `content` property is used within `::before` and `::after` pseudo-elements. In the declaration, specify the `content` property what you want to generate automatically as its value. For example, the following rule inserts the string "Note: " before the every element whose class attribute contains "note":
+## La propiedad `content`
+
+La propiedad `content` se utiliza dentro de los pseudo-elementos `::before` y `::after`. En la declaración, se especifica como valor de `content` aquello que se quiere generar automáticamente. Por ejemplo, la siguiente regla inserta la cadena "Note: " antes de cada elemento cuya clase contiene la palabra "note":
 
 ```css
 .note::before {
@@ -23,7 +24,7 @@ The `content` property is used within `::before` and `::after` pseudo-elements. 
 }
 ```
 
-You can style the element right where it’s set, like this:
+Puedes aplicar estilos al elemento directamente donde se define, por ejemplo:
 
 ```css
 .note::before {
@@ -33,17 +34,16 @@ You can style the element right where it’s set, like this:
 }
 ```
 
-## Generated text
+## Texto generado
 
-You can directly declare your text in the CSS (like above) but you can also use text specified in a `data-` custom attribute.
-
-In your HTML:
+Puedes declarar directamente el texto en CSS (como en los ejemplos anteriores), pero también puedes utilizar texto especificado en un atributo personalizado `data-`.
+En tu HTML:
 
 ```html
 <p class="ref" data-ref-id="0215">Some blabla as a reference</p>
 ```
 
-In your CSS:
+En tu CSS:
 
 ```css
 p.ref::before {
@@ -51,7 +51,7 @@ p.ref::before {
 }
 ```
 
-It's also possible to combine elements in the content property:
+También es posible combinar elementos dentro de la propiedad content:
 
 ```css
 p.ref::before {
@@ -59,13 +59,13 @@ p.ref::before {
 }
 ```
 
-Once displayed you will have this text:
+Una vez mostrado, obtendrás el siguiente texto:
 
 > `Reference 0215: Some blabla as a reference`
 
-## Generated counters
+## Contadores generados
 
-`css-counter` is a CSS property that lets you count elements within your content. For example, you might want to add a number before each figure caption. To do so, you would reset the counter in the `<body>` selector, increment it any time a caption appears in the content, and display that number in a `::before` pseudo-element.
+`css-counter` es una propiedad CSS que permite contar elementos dentro del contenido. Por ejemplo, puede que quieras añadir un número delante del pie de cada figura. Para hacerlo, debes reiniciar el contador en el selector `<body>`, incrementarlo cada vez que aparezca un pie de figura y mostrar ese número en un pseudo-elemento `::before`.
 
 ```css
 body {
@@ -81,9 +81,9 @@ figcaption::before {
 }
 ```
 
-## Generated images
+## Imágenes generadas
 
-If you need to have an image in your generated content, you can do it like this:
+Si necesitas incluir una imagen dentro del contenido generado, puedes hacerlo de la siguiente manera:
 
 ```css
 .glossary::after {
@@ -91,9 +91,9 @@ If you need to have an image in your generated content, you can do it like this:
 }
 ```
 
-## Generated links
+## Enlaces generados
 
-It can be useful to display the actual links of your content as a long URL when you want to print your webpage. The following example inserts the value of the href attribute in parentheses after each `<a>` element:
+Puede resultar útil mostrar las URL completas de los enlaces cuando se imprime una página web. El siguiente ejemplo inserta el valor del atributo href entre paréntesis después de cada elemento `<a>`:
 
 ```css
 a::after {
@@ -101,10 +101,10 @@ a::after {
 }
 ```
 
-## Generated content for paged media
+## Contenido generado para medios paginados
 
-The use of generated content is possible without Paged.js; `content` is a CSS property implemented in all browsers.
+El uso de contenido generado es posible sin Paged.js; `content` es una propiedad CSS implementada en todos los navegadores.
 
-But to design a book (or a paginated content) you need some elements added to help readers navigate between pages: running heads and footers, page numbers, table of content, index, cross-references, etc.
+Pero para diseñar un libro (o contenido paginado) se necesitan algunos elementos adicionales que ayuden a los lectores a navegar entre páginas: encabezados y pies de página corridos, números de página, tabla de contenidos, índice, referencias cruzadas, etc.
 
-These elements don’t exist in the HTML as a content, you need to create them automatically. To do that you can use a combination of syntaxes and properties that Paged.js implements called Generated Content for Paged Media.
+Estos elementos no existen en el HTML como contenido, por lo que deben crearse automáticamente. Para ello, se puede usar una combinación de sintaxis y propiedades que Paged.js implementa bajo el nombre de Generated Content for Paged Media.
