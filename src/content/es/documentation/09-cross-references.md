@@ -86,6 +86,6 @@ El W3C define un segundo argumento opcional que especifica qué contenido se rec
 
 ## Debug
 
-Estas funciones solo toman una URL de fragmento que apunta a una ubicación en el documento actual. Si no hay fragmento, si el ID referenciado no está ahí, o si la URL apunta a un documento externo, la función no devuelve nada en el caso de target-text() y `0` en el caso de target-counter().Sin embargo, si tu documento es largo, tal vez tu elemento objetivo aún no se ha cargado y la función también devuelve nada o `0`. Espera hasta que la carga se complete para que el número de página sea generado.
+Estas funciones solo toman la URL de fragmento que apunta a una ubicación en el documento actual. Si no hay fragmento, si el ID referenciado no está ahí, o si la URL apunta a un documento externo, la función no devuelve nada en el caso de target-text() y `0` en el caso de target-counter().Sin embargo, si tu documento es largo, tal vez tu elemento objetivo aún no se ha cargado y la función también devuelve nada o `0`. Espera hasta que la carga se complete para que el número de página sea generado.
 
 Si tu número de página parece incorrecto, tal vez es porque el elemento que estás apuntando está fragmentado en varias páginas. Recomendamos usar elementos cortos para apuntar (títulos de capítulo en lugar de toda la sección del capítulo).
