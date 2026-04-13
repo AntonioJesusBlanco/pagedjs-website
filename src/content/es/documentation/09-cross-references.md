@@ -1,22 +1,22 @@
 ---
-title: "Cross References"
+title: "Referencias cruzadas"
 date: 2020-01-28T15:56:05+01:00
 draft: false
 weight: 10
-intro: "References and links inside the book: send the reader to another page using hyperlinks"
+intro: "Referencias y enlaces dentro del libro: envía al lector a otra página usando hipervínculos"
 ---
 
-Many documents contain internal references like “see chapter 7” or “on page 23”. The reference may change according to your layout (specially page number). So, you can use generated content to create it.
+Muchos documentos contienen referencias internas como "ver capítulo 7" o "en la página 23". La referencia puede cambiar según tu diseño (especialmente el número de página). Por lo tanto, puedes usar contenido generado para crearla.
 
-You can use specific values for the content property to automatically create these types of cross-references: [target-counter()](https://www.w3.org/TR/css-gcpm-3/#funcdef-target-counter), [target-text()](https://www.w3.org/TR/css-gcpm-3/#target-text-function). Each of these displays information obtained from the target of a link.
+Puedes usar valores específicos para la propiedad content para crear automáticamente estos tipos de referencias cruzadas: [target-counter()](https://www.w3.org/TR/css-gcpm-3/#funcdef-target-counter), [target-text()](https://www.w3.org/TR/css-gcpm-3/#target-text-function). Cada uno de estos muestra información obtenida del destino de un enlace.
 
-You can use this target-counter() and target-text() functions to create table of content and book indexes for example (see the following parts).
+Puedes usar estas funciones target-counter() y target-text() para crear tablas de contenido e índices de libros, por ejemplo (ver las siguientes partes).
 
 ## Link targeted
 
-For cross-references, links are used that target anchors in the document.
+Para las referencias cruzadas, se usan enlaces que apuntan a anclas en el documento.
 
-First of all, in your HTML, you define a relevant element with an unique id in your document. For example, the figure 3 of your document:
+Primero que todo, en tu HTML, defines un elemento relevante con un id único en tu documento. Por ejemplo, la figura 3 de tu documento:
 
 ```html
 <figure id="figure-3">
@@ -25,7 +25,7 @@ First of all, in your HTML, you define a relevant element with an unique id in y
 </figure>
 ```
 
-In an other place of your HTML, you create a link anchor that refers to the unique identifier of your revelant element:
+En otro lugar de tu HTML, creas un ancla de enlace que hace referencia al identificador único de tu elemento relevante:
 
 ```html
 <p>see the <a class="link" href="#figure-3">figure 3</a></p>
@@ -33,7 +33,7 @@ In an other place of your HTML, you create a link anchor that refers to the uniq
 
 ## Target-counter()
 
-Generated content are set into your CSS. To find the pages on which the relevant elements appear inside the document, use the [target-counter()](https://www.w3.org/TR/css-gcpm-3/#target-counter) function in a `content` property set into `::before` or `::after` pseudo-elements. As all content properties, it can include some text:
+El contenido generado se establece en tu CSS. Para encontrar las páginas en las que aparecen los elementos relevantes dentro del documento, usa la función [target-counter()](https://www.w3.org/TR/css-gcpm-3/#target-counter) en una propiedad `content` establecida en los pseudo-elementos `::before` o `::after`. Como todas las propiedades content, puede incluir algo de texto:
 
 ```css
 .link::after {
@@ -41,11 +41,11 @@ Generated content are set into your CSS. To find the pages on which the relevant
 }
 ```
 
-This code take all the elements with a class named here `link` and search the element with the unique identifier specified in the `href` attribute of each first elements. When your document is rendered, it will generate the page number of the page where the element with the unique identifier appears.
+Este código toma todos los elementos con una clase nombrada aquí `link` y busca el elemento con el identificador único especificado en el atributo `href` de cada primer elemento. Cuando tu documento se renderiza, generará el número de página de la página donde aparece el elemento con el identificador único.
 
-With the example below, the text generated in your document will be “see the figure 3, page 27”.
+Con el ejemplo de abajo, el texto generado en tu documento será "see the figure 3, page 27".
 
-You can also specified a counter style:
+También puedes especificar un estilo de contador:
 
 ```css
 .link::after {
@@ -53,26 +53,26 @@ You can also specified a counter style:
 }
 ```
 
-For the moment, the `targer-counter()` function works only with the counter page. That means you can't use counters with other given name.
+Por el momento, la función `target-counter()` funciona solo con el contador page. Eso significa que no puedes usar contadores con otro nombre dado.
 
 ## Target-text()
 
-The [target-text()](https://www.w3.org/TR/css-gcpm-3/#target-text) function works like targer-counter() but retrieves the text value of the element referred to by the URL. You can use it to have title of chapter for example.
+La función [target-text()](https://www.w3.org/TR/css-gcpm-3/#target-text) funciona como target-counter() pero recupera el valor de texto del elemento referenciado por la URL. Puedes usarla para obtener el título del capítulo, por ejemplo.
 
-In you HTML, create the title of a chapter with an unique identifier:
+En tu HTML, crea el título de un capítulo con un identificador único:
 
 ```html
 <h1 id="chapter-1">Chapter 1. The beginning</h1>
 ```
 
-Later in your document, create an link to this chapter:
+Más adelante en tu documento, crea un enlace a este capítulo:
 
 ```html
 <p>Some text that refer to the <a class="link" href="#chapter-1">chapter</a>.</p>
 <p></p>
 ```
 
-In the CSS, use target-text to generate the cross reference:
+En el CSS, usa target-text para generar la referencia cruzada:
 
 ```css
 .link::after {
@@ -80,13 +80,12 @@ In the CSS, use target-text to generate the cross reference:
 }
 ```
 
-The text generated in your document will be “Some text that refer to the chapter (see Chapter 1. The beginning).”
+El texto generado en tu documento será "Some text that refer to the chapter (see Chapter 1. The beginning)."
 
-The W3C define an optional second argument specifies what content is retrieved, using the same values as the string-set property (`content`, `before `, `after`, `first-letter`) but it's not implemented yet in `paged.js`.
+El W3C define un segundo argumento opcional que especifica qué contenido se recupera, usando los mismos valores que la propiedad string-set (`content`, `before`, `after`, `first-letter`) pero aún no está implementado en `paged.js`.
 
 ## Debug
 
-These functions only take a fragment URL which points to a location in the current document. If there’s no fragment, if the ID referenced isn’t there, or if the URL points to an outside document, the function returns nothing in the case of target-text() and `0` in the case of target-counter().  
-However, if your document is long, maybe your target element is not yet loaded and the function also returns nothing or `0`. Wait until the loading is completed for the page number to be generated.
+Estas funciones solo toman una URL de fragmento que apunta a una ubicación en el documento actual. Si no hay fragmento, si el ID referenciado no está ahí, o si la URL apunta a un documento externo, la función no devuelve nada en el caso de target-text() y `0` en el caso de target-counter().Sin embargo, si tu documento es largo, tal vez tu elemento objetivo aún no se ha cargado y la función también devuelve nada o `0`. Espera hasta que la carga se complete para que el número de página sea generado.
 
-If your page number seems wrong is maybe because the element that you target is fragmented on several pages. We recommend using short elements to target (chapter titles rather than the entire chapter section).
+Si tu número de página parece incorrecto, tal vez es porque el elemento que estás apuntando está fragmentado en varias páginas. Recomendamos usar elementos cortos para apuntar (títulos de capítulo en lugar de toda la sección del capítulo).
