@@ -1,38 +1,37 @@
 ---
-title: "Named Page"
+title: "Paginas nombradas"
 date: 2020-01-28T15:54:01+01:00
 draft: false
-intro: "How to setup the page master based on the content of your html: the named page"
+intro: "Cómo configurar el page master basándose en el contenido de tu HTML: la named page"
 part: 8
 ---
 
 
-There could be pages in your book that may need their own, more specific layout: different background, different margins, and even different styles from the main rule.
-You can use what is called “named pages” to define this. Based on your HTML, you can bind a specific layout to any content.
+Pueden haber páginas en tu libro que necesiten un diseño más específico: diferente fondo, diferentes márgenes, e incluso estilos diferentes de la regla principal.
+Puedes usar lo que se llama "named pages" para definir esto. Basándote en tu HTML, puedes vincular un diseño específico a cualquier contenido.
 
-![How named pages works](/images/named-pages.png)
+![Cómo funcionan las named pages](/images/named-pages.png)
 
-Imagine you want a specific layout for the pages of your frontmatter. 
+Imagina que quieres un diseño específico para las páginas de tu frontmatter. 
 
-The `page` property is used to specify a particular type of page. With this property, you define that all sections with the class `frontmatter` will have a page template named here `frontmatterLayout`. Note that, page type names are case-sensitive identifiers.
+La propiedad `page` se usa para especificar un tipo particular de página. Con esta propiedad, defines que todas las secciones con la clase `frontmatter` tendrán una plantilla de página nombrada `frontmatterLayout`. Ten en cuenta que los nombres de tipo de página distinguen entre mayúsculas y minúsculas.
 
-You create also a specific @page rule with the same page type name where you create new properties of the page. 
+También creas una regla @page específica con el mismo nombre de tipo de página donde creas nuevas propiedades de la página. 
 
-That's how you will do with the code.:
-
+Así es como lo harías con el código:
 ```css
 .frontmatter {
 	page: frontmatterLayout;
 }
 
 @page frontmatterLayout {
-	/* specifics rules for the frontmatter*/
+	/* reglas específicas para el frontmatter*/
 }
 ```
 
-With this rule, each element with the `frontmatter` class will have a page break by default. A **page group** is created at each instance of elements with the `frontmatter` class.  
+Con esta regla, cada elemento con la clase `frontmatter` tendrá un salto de página por defecto. Un **page group** se crea en cada instancia de elementos con la clase `frontmatter`.
 
-It's possible to bind different section to the same @page rule.
+Es posible vincular diferentes secciones a la misma regla @page.
 
 ```css
 #half-title,
@@ -44,13 +43,13 @@ It's possible to bind different section to the same @page rule.
 ```
 
 
-## Mix page selectors and named pages
+## Mezclar selectores de página y named pages
 
-You can mix page selectors and named pages.
+Puedes mezclar selectores de página y named pages.
 
-For example, the first page of each chapter often requires special treatment. You can define a layout for all your chapters and select the first page of each chapter (of each page group).
+Por ejemplo, la primera página de cada capítulo a menudo requiere un tratamiento especial. Puedes definir un diseño para todos tus capítulos y seleccionar la primera página de cada capítulo (de cada page group).
 
-In the code bellow, each first page of elements with a class `chapter` are selected:
+En el código de abajo, se selecciona cada primera página de elementos con la clase `chapter`:
 
 ```css
 .chapter {
@@ -58,33 +57,33 @@ In the code bellow, each first page of elements with a class `chapter` are selec
 }
 
 @page chapter:first {
-    /* specifics rules for first page of each chapter */
+    /* reglas específicas para la primera página de cada capítulo */
 }
 ```
 
-You can also select the `:left` and the `:right` pages of named pages and page groups.
+También puedes seleccionar las páginas `:left` y `:right` de named pages y page groups.
 
-The `:nth()` and `:blank` selector doesn't work with named pages for now. But you can use this trick to select the blank pages of named pages:
+Los selectores `:nth()` y `:blank` no funcionan con named pages por ahora. Pero puedes usar este truco para seleccionar las páginas en blanco de named pages:
 
 ```css
 .pagedjs_chapter_page + .pagedjs_blank_page {
-	/* specific rules for blank pages of named page called "chapter" */
+/* reglas específicas para páginas en blanco de named page llamada "chapter" */
 }
 ```
 
 
 
-## Priority of @page rules
+## Prioridad de las reglas @page
 
-In paged.js, the page rules do not apply quite in cascade. The rules are defined by the order of priority below (ranked from lowest to highest priority):
+En paged.js, las reglas de página no se aplican exactamente en cascada. Las reglas se definen por el orden de prioridad a continuación (ordenadas de menor a mayor prioridad):
 
 - `@page { }`
-- `@page :left { }` or `@page :right { }`
+- `@page :left { }` o `@page :right { }`
 - `@page <namedPage> { }`
-- `@page <namedPage> :left { }` or `@page <namedPage> :right { }`
+- `@page <namedPage> :left { }` o `@page <namedPage> :right { }`
 - `@page :blank { }`
 - `@page :first { }`
 
 
 
-If a CSS property is defined in a lower priority page than another but not in the priority page, then the priority page inherits this property and its value. Otherwise, the property will take the new value defined in the priority page.
+Si una propiedad CSS está definida en una página de menor prioridad que otra pero no en la página de prioridad, entonces la página de prioridad hereda esta propiedad y su valor. De lo contrario, la propiedad tomará el nuevo valor definido en la página de prioridad.
